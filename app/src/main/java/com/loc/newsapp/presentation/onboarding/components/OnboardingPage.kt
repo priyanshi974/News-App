@@ -57,6 +57,6 @@ fun OnboardingPage(
 @Composable
 fun OnboardingPagePreview() {
     NewsAppTheme {
-        OnboardingPage(page = pages[0])
+        OnboardingPage(page = pages[1])
     }
 }
