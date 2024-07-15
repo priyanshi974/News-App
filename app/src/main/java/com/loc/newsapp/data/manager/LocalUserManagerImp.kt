@@ -12,6 +12,10 @@ import com.loc.newsapp.utils.constants.USER_SETTINGS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/***
+ * DataStore Preference is used to store page number as the key to store
+ * the page number so that we could navigate back to the previous page.
+ */
 class LocalUserManagerImp(
     private val context: Context
 ) : LocalUserManager {
