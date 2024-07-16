@@ -21,6 +21,7 @@ class OnboardingViewModel @Inject constructor(
     }
 
     private fun saveUserEntry() {
+        // This scope will be canceled when ViewModel.onCleared is called.
         viewModelScope.launch {
             appEntryUseCases.saveAppEntry()
         }
