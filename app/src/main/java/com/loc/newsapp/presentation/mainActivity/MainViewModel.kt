@@ -1,11 +1,11 @@
-package com.loc.newsapp
+package com.loc.newsapp.presentation.mainActivity
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.loc.newsapp.domain.manager.usecases.app_entry.AppEntryUseCases
-import com.loc.newsapp.navigation.Route
+import com.loc.newsapp.presentation.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn

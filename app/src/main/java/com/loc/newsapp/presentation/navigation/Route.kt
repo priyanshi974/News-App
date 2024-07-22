@@ -1,4 +1,4 @@
-package com.loc.newsapp.navigation
+package com.loc.newsapp.presentation.navigation
 
 sealed class Route(
     val route: String
