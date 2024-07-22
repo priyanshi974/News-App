@@ -27,12 +27,17 @@ import com.loc.newsapp.R
 import com.loc.newsapp.domain.model.Article
 import com.loc.newsapp.presentation.Dimension.Medium_Padding1
 import com.loc.newsapp.presentation.commons.ArticlesList
+import com.loc.newsapp.presentation.commons.SearchBar
 import com.loc.newsapp.presentation.navigation.Route
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit) {
+fun HomeScreen(
+    articles: LazyPagingItems<Article>,
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit
+) {
 
     val titles by remember {
         derivedStateOf {
@@ -63,6 +68,19 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit) {
 
         Spacer(modifier = Modifier.height(Medium_Padding1))
 
+        SearchBar(
+            modifier = Modifier
+                .padding(horizontal = Medium_Padding1)
+                .fillMaxWidth(),
+            text = "",
+            readOnly = true,
+            onValueChange = {},
+            onSearch = {},
+            onClick = navigateToSearch
+        )
+
+        Spacer(modifier = Modifier.height(Medium_Padding1))
+
         Text(
             text = titles, modifier = Modifier
                 .fillMaxWidth()
@@ -76,9 +94,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit) {
         ArticlesList(
             modifier = Modifier.padding(horizontal = Medium_Padding1),
             articles = articles,
-            onClick = {
-                //TODO: Navigate to Details Screen
-            }
+            onClick = navigateToDetails
         )
     }
 }

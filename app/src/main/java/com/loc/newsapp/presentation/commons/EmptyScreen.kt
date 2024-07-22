@@ -1,5 +1,6 @@
 package com.loc.newsapp.presentation.commons
 
+import android.telecom.Call
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -23,14 +24,25 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.graphics.DefaultAlpha
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewModelScope
 import androidx.paging.LoadState
+import androidx.paging.cachedIn
 
 import com.loc.newsapp.R
+import com.loc.newsapp.data.remote.NewsApi
+import com.loc.newsapp.data.remote.dto.NewsResponse
+import com.loc.newsapp.di.AppModule.provideNewsApi
+import com.loc.newsapp.domain.manager.usecases.news.NewsUseCases
+import com.loc.newsapp.presentation.onboarding.OnboardingEvent
+import kotlinx.coroutines.launch
+import retrofit2.Response
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import javax.security.auth.callback.Callback
 
 @Composable
 fun EmptyScreen(error: LoadState.Error? = null) {
@@ -62,6 +74,18 @@ fun EmptyScreen(error: LoadState.Error? = null) {
     }
 
     EmptyContent(alphaAnim = alphaAnimation, message = message, iconId = icon)
+
+    val context = LocalContext.current
+    val newsApi = remember { provideNewsApi() }
+    val newsUseCases : NewsUseCases
+//    NewsButton(
+//        text = "API HIT",
+//        onClick = {
+//            val news = newsUseCases.getNews(
+//                source = listOf("aaj-tak","abp-news","ndtv-india","bbc-news","abc-news")
+//            ).cachedIn(viewModelScope)
+//        }
+//    )
 
 }
 

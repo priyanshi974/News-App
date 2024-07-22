@@ -8,7 +8,7 @@ import retrofit2.http.Query
 // Retrofit API
 interface NewsApi {
 
-    @GET("everything")
+    @GET("v2/everything")
     suspend fun getNews(
         @Query("sources") sources: String,
         @Query("page") page: Int,

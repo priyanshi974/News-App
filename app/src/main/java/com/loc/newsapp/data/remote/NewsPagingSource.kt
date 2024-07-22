@@ -3,6 +3,7 @@ package com.loc.newsapp.data.remote
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.loc.newsapp.domain.model.Article
+import com.loc.newsapp.utils.constants.API_KEY
 
 /***
  * Defining in what quantity we will be fetching data from data source

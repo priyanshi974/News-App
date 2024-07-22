@@ -46,6 +46,7 @@ fun ArticlesList(
 }
 
 @Composable
+// Return type boolean shows the results if we have fetched the articles successfully or not
 fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
     val loadState = articles.loadState
     val error = when {

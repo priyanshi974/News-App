@@ -1,5 +1,6 @@
 package com.loc.newsapp.presentation.home
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
@@ -11,7 +12,11 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val newsUseCases: NewsUseCases
 ) : ViewModel(){
+
+    var state = mutableStateOf(HomeState())
+        private set
+
     val news = newsUseCases.getNews(
-        source = listOf("aaj-tak","abp-news","ndtv-india","ptc-news")
+        source = listOf("aaj-tak","abp-news","ndtv-india","bbc-news","abc-news")
     ).cachedIn(viewModelScope)
 }
